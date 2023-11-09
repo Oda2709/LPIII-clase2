@@ -18,9 +18,23 @@ public class VerEstudianteController {
 
     private final VerEstudianteService verEstudianteService;
 
-    @GetMapping
+    @GetMapping //consulta
     public List<Estudiante> obtenerEstudiantes() {
-        log.info("Se están pidiendo todos los estudiantes");
+        /*return List.of( // fijo
+          Estudiante.builder().id(1L)
+                  .nombre("Oda")
+                  .apellido("Mosquera")
+                  .edad(27)
+                  .build(),
+                Estudiante.builder()
+                        .id(30L).nombre("Maria")
+                        .apellido("Lopez")
+                        .edad(50)
+                        .build()
+        );*/
+
+
+      log.info("Se están pidiendo todos los estudiantes");
         return verEstudianteService.obtenerEstudiantes();
     }
 }

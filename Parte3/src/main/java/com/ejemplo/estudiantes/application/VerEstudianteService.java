@@ -15,7 +15,7 @@ public class VerEstudianteService {
     private final VerEstudianteRepository verEstudianteRepository;
 
     public List<Estudiante> obtenerEstudiantes() {
-        return verEstudianteRepository.findAll().stream()
+        return verEstudianteRepository.findAll().stream()//todoslos Estudiantes
                 .map(estudianteEntity ->
                     Estudiante.builder()
                             .id(estudianteEntity.getId())
