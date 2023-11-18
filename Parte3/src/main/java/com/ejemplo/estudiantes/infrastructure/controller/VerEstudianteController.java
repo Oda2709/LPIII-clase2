@@ -5,6 +5,7 @@ import com.ejemplo.estudiantes.domain.Estudiante;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,23 +19,16 @@ public class VerEstudianteController {
 
     private final VerEstudianteService verEstudianteService;
 
-    @GetMapping //consulta
+    @GetMapping
     public List<Estudiante> obtenerEstudiantes() {
-        /*return List.of( // fijo
-          Estudiante.builder().id(1L)
-                  .nombre("Oda")
-                  .apellido("Mosquera")
-                  .edad(27)
-                  .build(),
-                Estudiante.builder()
-                        .id(30L).nombre("Maria")
-                        .apellido("Lopez")
-                        .edad(50)
-                        .build()
-        );*/
-
-
-      log.info("Se están pidiendo todos los estudiantes");
+        log.info("Se están solicitando todos los estudiantes");
         return verEstudianteService.obtenerEstudiantes();
     }
+
+    @GetMapping("{id}") //forID
+    public Estudiante obtenerEstudiante(@PathVariable("id") Long EstudiantePorId) { //@PathVariable es el /... ejemplo estudiante/123
+        log.info("Se está solicitando estudiante con el id:" + EstudiantePorId);
+        return verEstudianteService.obtenerEstudiante(EstudiantePorId);
+    }
+
 }
